@@ -1,0 +1,46 @@
+
+
+    <div class="profile-usermenu">
+    <ul class="nav"  *ngFor=" let menu of menuProperties">
+    
+    
+              <li class="mb-4 ml-10">
+                <a href="javascript:void(0);" (click)="navigate(menu.url)">
+                    
+            <i class="{{menu.icon}}" style="color: #14348c;"></i>
+           
+            {{menu.titre}}</a>
+        </li>
+       
+      
+        
+        </ul>
+        </div>
+
+
+
+
+  <div style="margin-top: 130px;  margin-left:10px; font-family: 'Gill Sans'; font-weight: bold; color: gray;">
+    <span class="bi bi-power" style="color: #14348c;"></span>&nbsp; {{ 'component-menu.logout' | translate}}
+  
+  </div>
+
+
+
+
+
+  <script>
+$(function(){
+  var current_page_URL = location.href;
+  $( "a" ).each(function() {
+     if ($(this).attr("href") !== "#") {
+       var target_URL = $(this).prop("href");
+       if (target_URL == current_page_URL) {
+          $('nav a').parents('li, ul').removeClass('active');
+          $(this).parent('li').addClass('active');
+          return false;
+       }
+     }
+  });
+});
+    </script>

@@ -1,0 +1,73 @@
+<div class="row background-grey ">
+    <div class="col-md-4">
+        <div class="input-group flex-nowrap">
+            <input type="text" class="form-control" placeholder="{{ 'component-header.search' | translate}}" aria-label="Username" aria-describedby="addon-wrapping">
+            <span class="input-group-text background-white" id="addon-wrapping"> <i class="fas fa-search my-blue"></i></span>
+
+          </div>
+          
+    </div>
+    <div class="col-md-2">
+        <div class="input-group flex-nowrap">
+          
+           <p class="mt-2" style="font-size: 12px;"><i class="fa fa-refresh" style="color: #a4d46c; font-size: 18px; " aria-hidden="true"></i>  {{ 'component-header.lastdata' | translate}}  26 sept 2022 </p>
+            
+
+          </div>
+          
+    </div>
+    <div class="col-md-3">
+        <div class="input-group flex-nowrap  mb-1 d-flex justify-content-between">
+          
+            <button type="button" class="btn btn secondary">
+                
+              </button>
+
+              <button type="button" class="btn btn-outline-secondary background-white">
+                <i class="bi bi-wifi my-blue" ></i>
+              </button>
+
+              <button type="button" class="btn btn-outline-secondary background-white">
+                <i class="bi bi-bell-fill my-blue" ></i>
+              </button>
+              
+                <button type="button" name="lang" class="btn btn-outline-secondary background-white" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ currentLang | uppercase }} <i class="bi bi-caret-down-fill my-blue"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="javascript:void(0);" (click)="useLanguage('en')" >EN</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0);" (click)="useLanguage('fr')">FR</a></li>
+                </ul>
+
+                
+
+           
+                <span class="vertical"></span>
+            
+
+          </div>
+          
+          
+    </div>
+    <div class="col-md-3">
+        
+        <div class="row ">
+           
+            <div class="col-md-9 text-end my-blue">
+                <span>{{ 'component-header.messageWelcome' | translate}}, Mamoud</span> <br>
+                <span style="color: gray">Admin</span>
+            </div>
+
+            <div class="col-md-3">
+                <button type="button" class="btn btn-outline-secondary background-white">
+                    <a href="" [routerLink]="['/profil']">
+                        <img src="favicon.ico" class="rounded-circle" alt="">
+    
+                    </a>
+                </button>
+               
+            </div> 
+        </div>
+       
+    </div>
+</div>

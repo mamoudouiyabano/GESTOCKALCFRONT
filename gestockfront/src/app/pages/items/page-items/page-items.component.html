@@ -1,0 +1,123 @@
+<div class="col">
+    <div class="row m-3">
+        <div class="col-md-7 p-0">
+            <h1>{{ 'page-item.message1' | translate}}</h1>
+        </div>
+        <div class="col-md-5 text-end">
+          
+            <div class="row">
+                <app-boutton-action [isTransactionVisible]="false"
+                 (clickEvent)="nouvelItem()"
+                >
+                    
+                </app-boutton-action>
+            </div>
+          
+          
+        </div>
+    </div>
+
+    <div class="col m-3">
+      
+
+        <table class="table background-white">
+            <thead>
+              <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
+               
+                <th scope="col">{{ 'page-item.itemId' | translate}}</th>
+                <th scope="col">{{ 'page-item.itemName' | translate}}</th>
+                <th scope="col">{{ 'page-item.quantity' | translate}}</th>
+                <th scope="col">{{ 'page-item.unitPrice' | translate}}</th>
+                <th scope="col">{{ 'page-item.total' | translate}}</th>
+                <th scope="col">{{ 'page-item.currency' | translate}}</th>
+                <th scope="col">{{ 'page-item.lastUpdated' | translate}}</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr>
+               
+                <td>#0014225</td>
+                <td>Stylo Bleu</td>
+                <td>12</td>
+                <td>100</td>
+                <td>1200</td>
+                <td>$CAN</td>
+                <td>25/09/2022</td>
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+              <tr>
+               
+                <td>#0014225</td>
+                <td>Crayon</td>
+                <td>20</td>
+                <td>50</td>
+                <td>1000</td>
+                <td>$CAN</td>
+                <td>25/09/2022</td>
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+
+              <tr>
+               
+                <td>#0014225</td>
+                <td>Stylo Rouge</td>
+                <td>17</td>
+                <td>100</td>
+                <td>1700</td>
+                <td>$CAN</td>
+                <td>25/09/2022</td>
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+
+              <tr>
+               
+                <td>#0014225</td>
+                <td>Surligneur</td>
+                <td>20</td>
+                <td>100</td>
+                <td>2000</td>
+                <td>$CAN</td>
+                <td>25/09/2022</td>
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+
+              <tr>
+               
+                <td>#0014225</td>
+                <td>Gomme</td>
+                <td>30</td>
+                <td>100</td>
+                <td>3000</td>
+                <td>$CAN</td>
+                <td>25/09/2022</td>
+                  <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+
+
+
+           
+              
+            </tbody>
+          </table>
+
+
+
+
+
+    <div class="row m-3">
+        <!-- pagination 
+ <app-pagination></app-pagination> -->
+    </div>
+
+</div>

@@ -1,0 +1,273 @@
+<i class="bi bi-arrow-left my-blue" (click)="back()">  {{ 'component-button.back' | translate}}</i>
+<div class="card col-md-9 mt-2 background-white">
+   <!-- Tabs navs -->
+<ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link active"
+        id="ex1-tab-1"
+        data-bs-toggle="tab"
+        data-bs-target="#ex1-tabs-1"
+        role="tab"
+        aria-controls="ex1-tabs-1"
+        aria-selected="true"
+        ><p style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">  {{ 'page-employe.message4' | translate}} </p></a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-link"
+        id="ex1-tab-2"
+        data-bs-toggle="tab"
+        data-bs-target="#ex1-tabs-2"
+       
+      
+        role="tab"
+        aria-controls="ex1-tabs-2"
+        aria-selected="false"
+        ><p style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">  {{ 'page-employe.message5' | translate}} </p> </a
+      >
+    </li>
+
+  </ul>
+  <!-- Tabs navs -->
+  
+  <!-- Tabs content -->
+  <div class="tab-content" id="ex1-content">
+    <div
+      class="tab-pane fade show active"
+      id="ex1-tabs-1"
+      role="tabpanel"
+      aria-labelledby="ex1-tab-1"
+    >
+      
+
+    <div class="row">
+
+        <div class="col col-md-3">
+            
+                <button type="button" class="btn btn-outline-secondary background-white ml-10">
+                    <a href="" [routerLink]="['/profil']">
+                        <img src="https://media.istockphoto.com/photos/young-smiling-africanamerican-man-over-white-background-picture-id1081381240?k=20&m=1081381240&s=170667a&w=0&h=zI-Ptw_38pVKwc4EvS7DlGsm4P4MgjRbo7YCEz4ce2I=" width="140px" height="120px" class="rounded-circle" alt="">
+    
+                    </a>
+                   
+                </button>
+           
+             
+        </div>
+
+
+        <div class="col col-md-5">
+            <div class="row mb-2 ">
+                <label  class="col-sm-3 col-form-label">Infos</label>
+                <div class="col-sm-6  mb-2 ">
+                  <input type="text" value="Mamoud iyabano" disabled class="form-control" >
+                </div>
+             </div>
+             <div class="row mb-2 ">
+                <label  class="col-sm-3 col-form-label"> {{ 'page-inventory.itemId' | translate}}</label>
+                <div class="col-sm-3">
+                  <input type="text"  class="form-control" >
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" placeholder=" {{ 'page-employe.quantity' | translate}}" class="form-control" >
+                  </div>
+             </div>
+
+
+             <table class="table mt-5">
+                <thead>
+                  <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
+                 
+                    <th scope="col"> {{ 'page-employe.itemname' | translate}}</th>
+                    <th scope="col"> {{ 'page-employe.quantity' | translate}}</th>
+                    <th scope="col"> {{ 'page-employe.price' | translate}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+           
+                    <td>Stylo</td>
+                    <td>7</td>
+                    <td>700</td>
+                  </tr>
+                  <tr>
+                   
+                    <td>Gomme</td>
+                    <td>2</td>
+                    <td>200</td>
+                  </tr>
+
+                  <tr>
+                   
+                    <td>Crayon</td>
+                    <td>6</td>
+                    <td>300</td>
+                  </tr>
+
+                  <tr>
+                   
+                    <td>Gomme</td>
+                    <td>2</td>
+                    <td>200</td>
+                  </tr>
+                
+                </tbody>
+              </table>
+    
+          
+        </div>
+             
+        <div class="col col-md-4">
+            <div class="row mb-2 ">
+                <label  class="col-sm-3 col-form-label">{{ 'page-employe.employeeId' | translate}}</label>
+                <div class="col-sm-6  mb-2 ">
+                    <input type="text" placeholder="Enter here" class="form-control" >
+             
+                </div>
+             </div>
+
+             <div class="row mb-2 ">
+                <label  class="col-sm-3  mb-2  col-form-label">{{ 'page-employe.price' | translate}}</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" >
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-success vert" ><i class="fas fa-plus"></i> </button>
+                  </div>
+             </div>
+
+           
+
+         
+        </div>
+
+     
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+        <div style="max-height: 500px; overflow-y: scroll;">
+        <table class="table background-white longeurTab" >
+           
+            <thead>
+              <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
+         
+                <th scope="col">{{ 'page-employe.category' | translate}}</th>
+                <th scope="col">{{ 'page-employe.itemname' | translate}}</th>
+                <th scope="col">{{ 'page-employe.quantity' | translate}}</th>
+                <th scope="col">{{ 'page-employe.unit' | translate}}</th>
+                <th scope="col">{{ 'page-employe.receivedDate' | translate}}</th>
+                <th scope="col">{{ 'page-employe.assignedTo' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider" >
+                
+              <tr>
+                
+                <td>Fourniture de bureau</td>
+                <td>Stylo bleu</td>
+                <td>5</td>
+                <td>Piece</td>
+                <td>07/08/2022</td>
+                <td>Ali</td>
+              </tr>
+
+              <tr>
+                
+                <td>Fourniture de bureau</td>
+                <td>Traceuse</td>
+                <td>2</td>
+                <td>Piece</td>
+                <td>07/08/2022</td>
+                <td>Mamoudou</td>
+              </tr>
+
+              <tr>
+                
+                <td>Fourniture de bureau</td>
+                <td>Stylo rouge</td>
+                <td>3</td>
+                <td>Piece</td>
+                <td>07/08/2022</td>
+                <td>John</td>
+              </tr>
+
+              <tr>
+                
+                <td>Fourniture de bureau</td>
+                <td>Gomme</td>
+                <td>3</td>
+                <td>Piece</td>
+                <td>07/08/2022</td>
+                <td>Amed</td>
+              </tr>
+              <tr>
+                
+                <td>Fourniture de bureau</td>
+                <td>Stylo bleu</td>
+                <td>5</td>
+                <td>Piece</td>
+                <td>07/08/2022</td>
+                <td>Ali</td>
+              </tr>
+
+              <tr>
+                
+                <td>Fourniture de bureau</td>
+                <td>Traceuse</td>
+                <td>2</td>
+                <td>Piece</td>
+                <td>07/08/2022</td>
+                <td>Mamoudou</td>
+              </tr>
+
+              <tr>
+                
+                <td>Fourniture de bureau</td>
+                <td>Stylo rouge</td>
+                <td>3</td>
+                <td>Piece</td>
+                <td>07/08/2022</td>
+                <td>John</td>
+              </tr>
+
+              <tr>
+
+
+        
+
+     
+          
+           
+              
+            </tbody>
+        
+          </table>
+        </div>
+
+    </div>
+
+  </div>
+  <!-- Tabs content -->
+
+  
+</div>
+
+<div class="col-md-9   text-end">
+    <button type="button" class="btn btn-secondary   text-end mt-5" (click)="back()" >
+      {{ 'component-button.return' | translate}}</button>
+    <button type="button" class="btn btn-success vert text-end mt-5 ml-5" >
+      {{ 'component-button.request' | translate}}</button>
+  </div>
+
+
+
+
+<script>
+    $('a').on('click', function (e) {
+  e.preventDefault()
+  javascript:void(0);
+})
+</script>

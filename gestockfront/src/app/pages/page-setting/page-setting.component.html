@@ -1,0 +1,77 @@
+
+<div>
+    
+    <i class="bi bi-arrow-left my-blue" (click)="back()">  {{ 'component-button.back' | translate}} </i>
+  <div class="card col-md-9 background-white mt-2" >
+    <p style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold; margin-top: 20px; margin-left: 15px;">{{ 'page-setting.message1' | translate}}</p>
+    <div class="row">
+
+
+
+        <div class="col col-md-6">
+            <div class="row mb-2 ml-5">
+                <label  class="col-sm-3 col-form-label">{{ 'page-setting.currentPassword' | translate}}</label>
+                <div class="col-sm-6 mb-2">
+                  <input type="password" class="form-control" >
+                </div>
+             </div>
+             <div class="row mb-2 ml-5">
+                <label  class="col-sm-3 col-form-label">{{ 'page-setting.password' | translate}}</label>
+                <div class="col-sm-6  mb-2">
+                  <input type="password" class="form-control" >
+                </div>
+             </div>
+             <div class="row mb-5 ml-5">
+                <label  class="col-sm-3 col-form-label">{{ 'page-setting.repeat' | translate}}</label>
+                <div class="col-sm-6  mb-2">
+                    <input type="password" class="form-control" >
+                  </div>
+             </div>
+          
+        </div>
+             
+        <div class="col col-md-6">
+            <div class="row mb-2 ">
+                <label  class="col-sm-3 col-form-label">{{ 'page-setting.defaultlang' | translate}}</label>
+                <div class="col-sm-6  mb-2">
+                  
+                    <select class="form-select"  name="" id="">
+                        <option value="">English</option>
+                        <option value="">French</option>
+                    </select>
+             
+                </div>
+             </div>
+
+             <div class="row mb-2 ">
+                <label  class="col-sm-3 col-form-label">{{ 'page-setting.RemeberMe' | translate}}</label>
+                <div class="col-sm-6">
+                    <select class="form-select"  name="" id="">
+                        <option value="">Yes</option>
+                        <option value="">No</option>
+                    </select>
+                </div>
+             </div>
+
+       
+
+         
+        </div>
+      </div>
+    
+  
+  </div>
+
+
+  <div class="col-md-9   text-end">
+    <button type="button" class="btn btn-secondary   text-end mt-5" (click)="back()" >
+      {{ 'component-button.cancel' | translate}}</button>
+    <button type="button" class="btn btn-success vert text-end mt-5 ml-5" >
+      {{ 'component-button.save' | translate}}</button>
+  </div>
+
+</div>
+
+
+
+  

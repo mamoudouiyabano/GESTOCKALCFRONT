@@ -1,0 +1,120 @@
+{
+
+    "login-page" : {
+       "sign-in" : "Sign in",
+       "usernameOrEmail": "Username or email",
+       "password": "Password",
+       "RemeberMe": "Remeber me",
+       "ForgotPassword": "Forgot  password ?",
+       "button-signIn": "Sign In",
+       "footerMessage1": "Having Trouble?",
+       "footerMessage2": "Visit our Help Center"
+    },
+
+    "component-menu": {
+        "dashboard": "Dasboard",
+        "employee": "Employee",
+        "inventory": "Inventory",
+        "items": "Items",
+        "category": "Category",
+        "report": "Report",
+        "user": "Users",
+        "setting": "Setting",
+        "logout": "Logout"
+    },
+
+    "component-statistique": {
+        "welcome": "Welcome to Gestock !",
+        "message": "Welcome to your centralized management system, for a global and optimal follow-up"
+
+    },
+
+    "component-header": {
+        "search": "search",
+        "lastdata": "Last data sync",
+        "messageWelcome": "Hi"
+    },
+
+    "component-button": {
+        "import": "Import",
+        "export": "Export",
+        "transaction": "Transaction",
+        "new": "Add new",
+        "add": "Add",
+        "cancel": "Cancel",
+        "back": "Back",
+        "return": "Return",
+        "request": "Request",
+        "save": "save",
+        "generateReport": "Generate a report"
+    },
+
+    "page-employe": {
+        "message": "Employees",
+        "message2": "Add Employee",
+        "message3": "Add User",
+        "message4": "Transaction form",
+        "message5": "Received items",
+        "message6": "Users",
+        "employeeId": "Employee ID",
+        "firstname": "First name",
+        "lastname": "Last name",
+        "email": "Email",
+        "dob": "DOB",
+        "role": "Role",
+        "lastorder": "Last order",
+        "password": "Password",
+        "repeat": "Repeat",
+        "price": "Price",
+        "itemname": "Item name",
+        "quantity": "Quantity",
+        "category": "Category",
+        "unit": "Unit",
+        "receivedDate": "Received date",
+        "assignedTo": "Assigned To"
+    },
+
+    "page-inventory": {
+        "itemId": "Item ID",
+        "message": "Inventory",
+        "name": "Name",
+        "category": "Category",
+        "quantity": "Quantity",
+        "mvt": "mvt",
+        "actionDate": "Action date" 
+    },
+
+    "page-item": {
+        "message": "Add new item",
+        "message1": "Items",
+        "itemId": "Item ID",
+        "itemName": "Item Name",
+        "category": "Category",
+        "quantity": "Quantity",
+        "unitPrice": "Unit Price",
+        "total": "Total",
+        "currency": "Currency",
+        "lastUpdated": "Last Updated"
+
+    },
+
+    "page-setting" : {
+        "message1": "Change your password",
+        "currentPassword": "Current password",
+        "password": "Password",
+        "repeat": "Repeat",
+        "defaultlang": "Default language",
+        "RemeberMe": "Remeber me"
+
+    },
+
+    "page-category": {
+        "message": "Category",
+        "message1": "Add new category",
+        "categoryId": "Category ID",
+        "code": "Code",
+        "designation": "Designation"
+    }
+
+
+}

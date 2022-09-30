@@ -1,0 +1,118 @@
+{
+
+    "login-page" : {
+       "sign-in" : "Se connecter",
+       "usernameOrEmail": "Nom d'utilisateur ou email",
+       "password": "Mot de passe",
+       "RemeberMe": "Se souvenir de moi",
+       "ForgotPassword": "Mot de passe oublié ?",
+       "button-signIn": "Se Connecter",
+       "footerMessage1": "Vous avez des problèmes ?",
+       "footerMessage2": "Visitez notre centre d'aide"
+    },
+
+    "component-menu": {
+        "dashboard": "Tableau de bord",
+        "employee": "Employés",
+        "inventory": "Inventaire",
+        "items": "Articles",
+        "category": "Categories",
+        "report": "Rapport",
+        "user": "Utilisateurs",
+        "setting": "Réglage",
+        "logout": "Déconnexion"
+    },
+    "component-statistique": {
+        "welcome": "Bienvenue sur Gestock !",
+        "message": "Bienvenue dans votre système de gestion centralisée, pour un suivi global et optimal"
+
+    },
+
+    "component-header": {
+        "search": "Rechercher",
+        "lastdata": "Dernière sync",
+        "messageWelcome": "Bonjour"
+    },
+
+    "component-button": {
+        "import": "Importer",
+        "export": "Exporter",
+        "transaction": "Transaction",
+        "new": "Nouveau",
+        "add": "Ajouter",
+        "cancel": "Sortir",
+        "back": "Retour",
+        "return": "Retour",
+        "request": "Demander",
+        "save": "Enregistrer",
+        "generateReport": "Générer un rapport"
+    },
+
+    "page-employe": {
+        "message": "Employés",
+        "message2": "Ajouter Employé",
+        "message3": "Ajouter Utilisateur",
+        "message4": "Formulaire de transaction",
+        "message5": "Articles reçus",
+        "message6": "Utilisateurs",
+        "employeeId": "Matricule Employé",
+        "firstname": "Prénom",
+        "lastname": "Nom",
+        "email": "Email",
+        "dob": "DEM",
+        "role": "Rôle",
+        "lastorder": "Dernière commande",
+        "password": "Mot de passe",
+        "repeat": "Répété",
+        "price": "Prix",
+        "itemname": "Nom Article",
+        "quantity": "Quantité",
+        "category": "Catégorie",
+        "unit": "Unité",
+        "receivedDate": "Date réception ",
+        "assignedTo": "Assigné à"
+    },
+
+    "page-inventory": {
+        "itemId": "ID Article",
+        "name": "Nom",
+        "message": "Mouvement stock",
+        "category": "Categorie",
+        "quantity": "Quantité",
+        "mvt": "type mvt",
+        "actionDate": "Date d'action" 
+    },
+
+    "page-item": {
+        "message": "Ajouter nouveau article",
+        "message1": "Articles",
+        "itemId": "ID Article",
+        "itemName": "Nom Article",
+        "category": "Catégorie",
+        "quantity": "Quantité",
+        "unitPrice": "Prix Unitaire",
+        "total": "Total",
+        "currency": "Devise",
+        "lastUpdated": "Dernière modification "
+
+    },
+
+    "page-setting" : {
+        "message1": "Changer votre mot de passe",
+        "currentPassword": "Mot de passe actuel",
+        "password": "Mot de passe",
+        "repeat": "Répété",
+        "defaultlang": "Langage par défaut",
+        "RemeberMe": "Se souvenir de moi"
+
+    },
+
+    "page-category": {
+        "message": "Categories",
+        "message1": "Ajouter une catégorie",
+        "categoryId": "Categorie ID",
+        "code": "Code",
+        "designation": "Designation"
+    }
+
+}

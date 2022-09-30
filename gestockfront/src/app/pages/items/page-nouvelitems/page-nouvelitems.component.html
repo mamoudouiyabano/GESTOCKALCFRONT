@@ -1,0 +1,75 @@
+
+<div>
+    
+    <i class="bi bi-arrow-left my-blue" (click)="back()">  {{ 'component-button.back' | translate}}</i>
+  <div class="card col-md-9 background-white mt-2" >
+    <p style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold; margin-top: 20px; margin-left: 15px;">{{ 'page-item.message' | translate}}</p>
+    <div class="row">
+
+
+
+        <div class="col col-md-6">
+            <div class="row mb-2 ml-5">
+                <label  class="col-sm-3 col-form-label">{{ 'page-item.itemName' | translate}}</label>
+                <div class="col-sm-6 mb-2">
+                  <input type="text" class="form-control" >
+                </div>
+             </div>
+             <div class="row mb-2 ml-5">
+                <label  class="col-sm-3 col-form-label">{{ 'page-item.itemId' | translate}}</label>
+                <div class="col-sm-6  mb-2">
+                  <input type="email" class="form-control" >
+                </div>
+             </div>
+             <div class="row mb-5 ml-5">
+                <label  class="col-sm-3 col-form-label">{{ 'page-item.unitPrice' | translate}}</label>
+                <div class="col-sm-3">
+                    <input type="text" value="$CAN" disabled class="form-control" >
+                  </div>
+                <div class="col-sm-3">
+                  <input type="number" class="form-control" >
+                </div>
+             </div>
+          
+        </div>
+             
+        <div class="col col-md-6">
+            <div class="row mb-2 ">
+                <label  class="col-sm-3 col-form-label">{{ 'page-item.category' | translate}}</label>
+                <div class="col-sm-6  mb-2">
+                  
+                    <select class="form-select"  name="" id="">
+                        <option value="">Fourniture</option>
+                        <option value="">Autres</option>
+                    </select>
+             
+                </div>
+             </div>
+
+             <div class="row mb-2 ">
+                <label  class="col-sm-3 col-form-label">{{ 'page-item.quantity' | translate}}</label>
+                <div class="col-sm-3">
+                  <input type="email" class="form-control" >
+                </div>
+             </div>
+
+       
+
+         
+        </div>
+      </div>
+    
+  
+  </div>
+
+
+  <div class="col-md-9 text-end">
+    <button type="button" class="btn btn-success vert text-end mt-5" >
+      {{ 'component-button.add' | translate}}</button>
+  </div>
+
+</div>
+
+
+
+  

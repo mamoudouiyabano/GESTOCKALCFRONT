@@ -1,0 +1,107 @@
+<div class="col">
+    <div class="row m-3">
+        <div class="col-md-7 p-0">
+            <h1>{{ 'page-category.message' | translate}}</h1>
+        </div>
+        <div class="col-md-5 text-end">
+          
+            <div class="row">
+                <app-boutton-action [isTransactionVisible]="false"
+                
+                 (clickEvent)="nouvelCategory()"
+                >
+                    
+                </app-boutton-action>
+            </div>
+          
+          
+        </div>
+    </div>
+
+    <div class="col m-3">
+      
+
+        <table class="table background-white">
+            <thead>
+              <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
+               
+                <th scope="col">{{ 'page-category.categoryId' | translate}}</th>
+                <th scope="col">{{ 'page-category.code' | translate}}</th>
+                <th scope="col">{{ 'page-category.designation' | translate}}</th>
+           
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr>
+               
+                <td>#0014225</td>
+                <td>CAT 1</td>
+                <td>Fourniture Bureau</td>
+         
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+
+              <tr>
+               
+                <td>#0012225</td>
+                <td>CAT 2</td>
+                <td>Meuble Bureau</td>
+         
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+
+              <tr>
+               
+                <td>#0017225</td>
+                <td>CAT 3</td>
+                <td>Reserve Bureau</td>
+         
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+
+              <tr>
+               
+                <td>#0014225</td>
+                <td>CAT 1</td>
+                <td>Fourniture Bureau</td>
+         
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+
+              <tr>
+               
+                <td>#0014225</td>
+                <td>CAT 1</td>
+                <td>Fourniture Bureau</td>
+         
+                <td>
+                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                </td>
+              </tr>
+             
+
+
+           
+              
+            </tbody>
+          </table>
+
+
+
+
+
+    <div class="row m-3">
+        <!-- pagination 
+ <app-pagination></app-pagination> -->
+    </div>
+
+</div>

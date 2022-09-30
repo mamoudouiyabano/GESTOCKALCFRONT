@@ -1,0 +1,110 @@
+<div class="col">
+    <div class="row m-3">
+        <div class="col-md-7 p-0">
+            <h1>{{ 'page-employe.message' | translate}}</h1>
+        </div>
+        <div class="col-md-5 text-end">
+          
+            <div class="row">
+                <app-boutton-action [isExporterVisible]="false"
+                 (clickEvent)="nouvelEmploye()"
+                 (clickEvent1)="transaction()">
+                    
+                </app-boutton-action>
+            </div>
+          
+          
+        </div>
+    </div>
+
+    <div class="col m-3">
+      
+
+        <table class="table background-white">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">{{ 'page-employe.employeeId' | translate}}</th>
+                <th scope="col">{{ 'page-employe.firstname' | translate}}</th>
+                <th scope="col">{{ 'page-employe.lastname' | translate}}</th>
+                <th scope="col">{{ 'page-employe.dob' | translate}}</th>
+                <th scope="col">{{ 'page-employe.role' | translate}}</th>
+                <th scope="col">{{ 'page-employe.lastorder' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr>
+                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
+                <td>#0014225</td>
+                <td>Otto</td>
+                <td>Ali</td>
+                <td>07/08/20200</td>
+                <td>It Developer</td>
+                <td>09/09/2022</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
+                <td>#0014247</td>
+                <td>Amed</td>
+                <td>Annour</td>
+                <td>07/08/20200</td>
+                <td>HR</td>
+                <td>09/09/2022</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
+                <td>#0016425</td>
+                <td>Mill</td>
+                <td>Abbo</td>
+                <td>07/08/20200</td>
+                <td>It Developer</td>
+                <td>09/09/2022</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
+                <td>#0014225</td>
+                <td>Otto</td>
+                <td>Ali</td>
+                <td>07/08/20200</td>
+                <td>It Developer</td>
+                <td>09/09/2022</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
+                <td>#0014247</td>
+                <td>Amed</td>
+                <td>Annour</td>
+                <td>07/08/20200</td>
+                <td>HR</td>
+                <td>09/09/2022</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
+                <td>#0016425</td>
+                <td>Mill</td>
+                <td>Abbo</td>
+                <td>07/08/20200</td>
+                <td>It Developer</td>
+                <td>09/09/2022</td>
+              </tr>
+          
+           
+              
+            </tbody>
+          </table>
+
+
+
+
+
+    <div class="row m-3">
+        <!-- pagination 
+ <app-pagination></app-pagination> -->
+    </div>
+
+</div>

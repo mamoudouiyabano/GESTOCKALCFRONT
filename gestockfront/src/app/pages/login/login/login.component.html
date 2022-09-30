@@ -1,0 +1,45 @@
+<div class="container my-container" >
+
+    <div class="card justify-content-md-center">
+        <div class="text-end">
+           <img  [src]="logoUrl" idth="150px" height="150px" alt="logoAlc">
+        </div>
+        <div class="card-body">
+          <p style="font-family: Lucida Sans; font-weight: bold; font-size: large; color: #317AC1;">{{ 'login-page.sign-in' | translate}}</p>
+          <div class="input-group mb-4">
+            <span class="input-group-text" style="background-color: white;"> <i class="fas fa-user" style="color: blue;"></i></span>
+            <input type="text" class="form-control" placeholder="{{ 'login-page.usernameOrEmail' | translate}}" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text" style="background-color: white;"><i class="fa fa-unlock-alt" aria-hidden="true" style="color: blue;"></i></span>
+            <input type="text" class="form-control" placeholder="{{ 'login-page.password' | translate}}" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+
+              <div class="mb-4 d-flex justify-content-between">
+                <p><input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked> {{ 'component-menu.RemeberMe' | translate}}</p>
+                <p>{{ 'login-page.ForgotPassword' | translate}}</p>
+              </div>
+
+              <div class="container text-center">
+                <div class="row">
+                
+                  <div class="col-12">
+                    <button type="button" class="btn btn-success vert" style="width: 100%;" >
+                      {{ 'login-page.button-signIn' | translate}}</button>
+                  </div>
+             
+                </div>
+              </div>
+
+              <div class="mt100">
+                <div class="container text-center mt-5 mb100" >
+                  {{ 'login-page.footerMessage1' | translate}}  <a href="#" style="color: #317AC1;"> {{ 'login-page.footerMessage2' | translate}}</a>
+                </div>
+              </div>
+       
+        </div>
+   
+      </div>
+
+</div>
+

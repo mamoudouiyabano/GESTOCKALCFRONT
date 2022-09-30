@@ -1,0 +1,102 @@
+<div class="col">
+    <div class="row m-3">
+        <div class="col-md-7 p-0">
+            <h1>{{ 'page-inventory.message' | translate}}</h1>
+        </div>
+        <div class="col-md-5 text-end">
+          
+            <div class="row">
+                <app-boutton-action 
+                [isImporterVisible]="false"
+                [isTransactionVisible]="false"
+                 (clickEvent)="nouvelItem()"
+                >
+                    
+                </app-boutton-action>
+            </div>
+          
+          
+        </div>
+    </div>
+
+    <div class="col m-3">
+      
+
+        <table class="table background-white">
+            <thead>
+              <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
+               
+                <th scope="col">{{ 'page-inventory.itemId' | translate}}</th>
+                <th scope="col">{{ 'page-inventory.name' | translate}}</th>
+                <th scope="col">{{ 'page-inventory.category' | translate}}</th>
+                <th scope="col">{{ 'page-inventory.quantity' | translate}}</th>
+                <th scope="col">{{ 'page-inventory.mvt' | translate}}</th>
+                <th scope="col">{{ 'page-inventory.actionDate' | translate}}</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              <tr>
+              
+                <td>#0014225</td>
+                <td>Stylo bleu</td>
+                <td>Fourniture de bureau</td>
+                <td>5</td>
+                <td>entree</td>
+                <td>24/09/2022</td>
+              </tr>
+
+              <tr>
+              
+                <td>#0014425</td>
+                <td>Stylo Rouge</td>
+                <td>Fourniture de bureau</td>
+                <td>8</td>
+                <td>entree</td>
+                <td>24/09/2022</td>
+              </tr>
+
+              <tr>
+              
+                <td>#0014285</td>
+                <td>Gomme</td>
+                <td>Fourniture de bureau</td>
+                <td>-3</td>
+                <td>sortie</td>
+                <td>24/09/2022</td>
+              </tr>
+
+              <tr>
+              
+                <td>#0014225</td>
+                <td>Stylo vert</td>
+                <td>Fourniture de bureau</td>
+                <td>2</td>
+                <td>entree</td>
+                <td>24/09/2022</td>
+              </tr>
+
+              <tr>
+              
+                <td>#0024285</td>
+                <td>Crayon</td>
+                <td>Fourniture de bureau</td>
+                <td>-5</td>
+                <td>sortie</td>
+                <td>24/09/2022</td>
+              </tr>
+
+      
+              
+            </tbody>
+          </table>
+
+
+
+
+
+    <div class="row m-3">
+        <!-- pagination 
+ <app-pagination></app-pagination> -->
+    </div>
+
+</div>

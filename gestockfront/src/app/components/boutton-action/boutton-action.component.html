@@ -1,0 +1,21 @@
+<div class="row">
+
+    <div class="col-md-3" *ngIf="isExporterVisible">
+        <button type="button" class="btn btn  background-white "><span class="my-blue" style="font-weight: bold;"><i class="bi bi-download"></i> {{ 'component-button.export' | translate}}</span></button>
+    </div>
+
+    <div class="col-md-3 " *ngIf="isImporterVisible">
+        <button type="button" class="btn btn background-white"><span class="my-blue" style="font-weight: bold;"><i class="bi bi-upload "></i>  {{ 'component-button.import' | translate}}</span></button>
+    </div>
+    
+  
+    
+    <div class="col-md-3" *ngIf="isNouveauVisible">
+        <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true" (click)="bouttonNouveauClick()"></i>  {{ 'component-button.new' | translate}}</button>
+    </div>
+
+    <div class="col-md-3" *ngIf="isTransactionVisible">
+        <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true" (click)="bouttonTransactionClick()"></i>  {{ 'component-button.transaction' | translate}}</button>
+    </div>
+    
+    </div>
