@@ -1,0 +1,11 @@
+.loader{
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+  }
+  .loader-overlay{
+   position: absolute;
+   width: 100%;
+   z-index: 5000000;
+   top: 0;
+    }

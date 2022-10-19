@@ -118,5 +118,13 @@ export class MenuComponent implements OnInit {
   }
 
   
+  logout(): void {
+    localStorage.removeItem('accessToken');
+    window.location.reload();
+    console.log('deconnexion');
+    
+  }
+
+  
 
 }

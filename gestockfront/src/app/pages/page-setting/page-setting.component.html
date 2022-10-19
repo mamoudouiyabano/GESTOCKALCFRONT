@@ -12,19 +12,19 @@
             <div class="row mb-2 ml-5">
                 <label  class="col-sm-3 col-form-label">{{ 'page-setting.currentPassword' | translate}}</label>
                 <div class="col-sm-6 mb-2">
-                  <input type="password" class="form-control" >
+                  <input type="password" value="{{utilisateurInfo.motDePasse}}" class="form-control" >
                 </div>
              </div>
              <div class="row mb-2 ml-5">
                 <label  class="col-sm-3 col-form-label">{{ 'page-setting.password' | translate}}</label>
                 <div class="col-sm-6  mb-2">
-                  <input type="password" class="form-control" >
+                  <input type="password" name="motDePasse" [(ngModel)]="changerMotDepasseDto.motDePasse" class="form-control" >
                 </div>
              </div>
              <div class="row mb-5 ml-5">
                 <label  class="col-sm-3 col-form-label">{{ 'page-setting.repeat' | translate}}</label>
                 <div class="col-sm-6  mb-2">
-                    <input type="password" class="form-control" >
+                    <input type="password" name="repeat" [(ngModel)]="changerMotDepasseDto.confirmMotDePasse" class="form-control" >
                   </div>
              </div>
           
@@ -66,7 +66,7 @@
   <div class="col-md-9   text-end">
     <button type="button" class="btn btn-secondary   text-end mt-5" (click)="back()" >
       {{ 'component-button.cancel' | translate}}</button>
-    <button type="button" class="btn btn-success vert text-end mt-5 ml-5" >
+    <button type="button" class="btn btn-success vert text-end mt-5 ml-5" (click)="save()">
       {{ 'component-button.save' | translate}}</button>
   </div>
 

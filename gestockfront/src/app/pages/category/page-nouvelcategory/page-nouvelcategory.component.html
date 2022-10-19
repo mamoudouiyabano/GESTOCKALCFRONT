@@ -9,16 +9,18 @@
 
 
         <div class="col col-md-12">
+          <div class="alert alert-danger" *ngIf="errorDto.errors">{{errorDto.errors}}</div>
+       
             <div class="row mb-2 ml-5">
                 <label  class="col-sm-3 col-form-label">{{ 'page-category.code' | translate}}</label>
                 <div class="col-sm-6 mb-2">
-                  <input type="text" class="form-control" >
+                  <input type="text" class="form-control" name="codeCat" [(ngModel)]="categoryDto.code" >
                 </div>
              </div>
              <div class="row mb-2 ml-5">
                 <label  class="col-sm-3 col-form-label">{{ 'page-category.designation' | translate}}</label>
                 <div class="col-sm-6  mb-5">
-                  <input type="text" class="form-control" >
+                  <input type="text" class="form-control" [(ngModel)]="categoryDto.designation" >
                 </div>
              </div>
         
@@ -33,7 +35,7 @@
 
 
   <div class="col-md-9 text-end">
-    <button type="button" class="btn btn-success vert text-end mt-5" >
+    <button type="button" class="btn btn-success vert text-end mt-5" (click)="saveCategory()">
       {{ 'component-button.add' | translate}}</button>
   </div>
 

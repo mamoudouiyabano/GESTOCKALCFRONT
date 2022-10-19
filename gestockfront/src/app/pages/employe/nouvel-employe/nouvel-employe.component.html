@@ -5,14 +5,15 @@
   <div class="card col-md-9 background-white mt-2" >
     <p style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold; margin-top: 20px; margin-left: 15px;">{{ 'page-employe.message2' | translate}}</p>
     <div class="row">
-
+      <div class="alert alert-danger" *ngIf="errorDto.errors">{{errorDto.errors}}  {{errorDto.message}}</div>
         <div class="col col-md-3">
             
-                <button type="button" class="btn btn-outline-secondary background-white ml-10">
-                    <a href="" [routerLink]="['/profil']">
-                        <img src="https://media.istockphoto.com/photos/young-smiling-africanamerican-man-over-white-background-picture-id1081381240?k=20&m=1081381240&s=170667a&w=0&h=zI-Ptw_38pVKwc4EvS7DlGsm4P4MgjRbo7YCEz4ce2I=" width="110px" height="110px" class="rounded-circle" alt="">
+                <button (click)="fileInput.click()"  class="btn btn-outline-secondary background-white ml-10">
+                   
+                        <img [src]="employeDto.photo ? employeDto.photo: 'assets/user.png'" width="110px" height="110px" class="rounded-circle" alt="">
+                        <input hidden type="file" #fileInput (change)="onFileInput(fileInput.files)">
     
-                    </a>
+                 
                     <i class="fas fa-pencil-alt my-blue"></i>
                 </button>
            
@@ -24,19 +25,19 @@
             <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.employeeId' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" >
+                  <input type="text"  name="codeEmploye" [(ngModel)]="employeDto.codeEmploye" class="form-control" >
                 </div>
              </div>
              <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.firstname' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" >
+                  <input type="text"  name="prenom" [(ngModel)]="employeDto.prenom" class="form-control" >
                 </div>
              </div>
              <div class="row mb-5 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.dob' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="date" class="form-control" >
+                  <input type="date"  name="dateEmbauche" [(ngModel)]="employeDto.dateEmbauche" class="form-control" >
                 </div>
              </div>
           
@@ -46,7 +47,7 @@
             <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.role' | translate}}</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" >
+                    <input type="text"  name="poste" [(ngModel)]="employeDto.poste" class="form-control" >
              
                 </div>
              </div>
@@ -54,14 +55,14 @@
              <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.lastname' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" >
+                  <input type="text"  name="nom" [(ngModel)]="employeDto.nom" class="form-control" >
                 </div>
              </div>
 
              <div class="row mb-5 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.email' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" >
+                  <input type="email"  name="email" [(ngModel)]="employeDto.email" class="form-control" >
                 </div>
              </div>
 
@@ -74,7 +75,7 @@
 
 
   <div class="col-md-9 text-end">
-    <button type="button" class="btn btn-success vert text-end mt-5" >
+    <button type="button" class="btn btn-success vert text-end mt-5"  (click)="saveEmploye()">
       {{ 'component-button.add' | translate}}</button>
   </div>
 

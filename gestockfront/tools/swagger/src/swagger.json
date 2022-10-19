@@ -1,0 +1,1283 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Swagger Api documentation for gestiondestock application",
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "Swagger Api documentation for gestock ALC application",
+    "contact" : {
+      "name" : "Mamoudou Iyabano",
+      "url" : "http://mamoudou.com",
+      "email" : "mamoudouiyabano@gmail.com"
+    }
+  },
+  "basePath" : "http://localhost:8084",
+  "tags" : [ {
+    "name" : "gestockv1categories"
+  }, {
+    "name" : "gestockv1cmdemployes"
+  }, {
+    "name" : "gestockv1employes"
+  }, {
+    "name" : "gestockv1items"
+  }, {
+    "name" : "gestockv1mvtstk"
+  }, {
+    "name" : "gestockv1photos"
+  }, {
+    "name" : "gestockv1utilisateurs"
+  } ],
+  "paths" : {
+    "/gestock/v1/categories/all" : {
+      "get" : {
+        "tags" : [ "gestockv1categories" ],
+        "summary" : "Renvoi la liste de toutes les categories",
+        "description" : "permet de chercher et de renvoyer la liste des categories",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La categorie a ete trouve dans la bd",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CategoryDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/categories/code/{codeCategory}" : {
+      "get" : {
+        "summary" : "Rechercher une categorie par code",
+        "description" : "permet de chercher  une categorie par code",
+        "operationId" : "findByCodeCategory",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La categorie a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/CategoryDto"
+            }
+          },
+          "404" : {
+            "description" : "aucune categorie existant avec ce code"
+          }
+        }
+      }
+    },
+    "/gestock/v1/categories/create" : {
+      "post" : {
+        "tags" : [ "gestockv1categories" ],
+        "summary" : "Enregistrer une categorie",
+        "description" : "permet d'enregisdtrer ou modifier une categorie",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/CategoryDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet categorie cree",
+            "schema" : {
+              "$ref" : "#/definitions/CategoryDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet categorie n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/categories/delete/{idCategory}" : {
+      "delete" : {
+        "summary" : "Supprimer une categorie avec sin Id",
+        "description" : "permet de supprimer  une categorie par id",
+        "operationId" : "delete",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La categorie a ete supprime dans la bd"
+          }
+        }
+      }
+    },
+    "/gestock/v1/categories/{idCategory}" : {
+      "get" : {
+        "tags" : [ "gestockv1categories" ],
+        "summary" : "Rechercher une categorie par id",
+        "description" : "permet de chercher  une categorie par id",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCategory",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La categorie a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/CategoryDto"
+            }
+          },
+          "404" : {
+            "description" : "aucune categorie existant avec cet id"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/all" : {
+      "get" : {
+        "summary" : "Renvoi la liste de tous les commandes employe",
+        "description" : "permet de chercher et de renvoyer la liste des commandes employe",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La commande employe a ete trouve dans la bd",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CommandeEmployeDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/allLignesCmde" : {
+      "get" : {
+        "summary" : "Renvoi la liste de toute les lignes commandes employe",
+        "description" : "Renvoi la liste de toute les lignes commandes employe",
+        "operationId" : "findAllLignesCmdes",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La commande employe a ete trouve dans la bd",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LigneCmdEmployeDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/code/{codeCmd}" : {
+      "get" : {
+        "summary" : "Rechercher une commande employe par code",
+        "description" : "permet de chercher  une commande employe par code",
+        "operationId" : "findByCodeCommande",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La Commande employe a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeEmployeDto"
+            }
+          },
+          "404" : {
+            "description" : "aucune commande employe existant avec ce code"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/create" : {
+      "post" : {
+        "summary" : "Enregistrer une commande employe",
+        "description" : "permet d'enregisdtrer ou modifier une commande employe ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet commande employe cree",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeEmployeDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet commande employe n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/delete/item/{idCommande}/{idLigneCommande}" : {
+      "delete" : {
+        "tags" : [ "gestockv1cmdemployes" ],
+        "summary" : "Suppresssion d'une ligne de commande",
+        "description" : "permet de supprimer un item ou une ligne de commande ",
+        "operationId" : "deleteItem",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idLigneCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Suprression effectuee",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeEmployeDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet commande employe n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/delete/{idCmd}" : {
+      "delete" : {
+        "summary" : "Supprimer une commande employe avec son Id",
+        "description" : "permet de supprimer  une commande employe par id",
+        "operationId" : "delete",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La commande employe a ete supprime dans la bd"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/lignesCommande/{idCommande}" : {
+      "get" : {
+        "summary" : "Rechercher toutes les lignescommandes d'un employe par lID de sa commande",
+        "description" : "permet de chercher  toutes les lignescommandes d'un employe par lID de sa commande",
+        "operationId" : "findAllLignesCommandesEmployeByCommandeEmployeId",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Les lignes ont ete trouvee dans la BDD",
+            "schema" : {
+              "$ref" : "#/definitions/LigneCmdEmployeDto"
+            }
+          },
+          "404" : {
+            "description" : "aucune commande employe existant avec ce code"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/update/employe/{idCommande}/{idemploye}" : {
+      "patch" : {
+        "summary" : "Modifier  la commande d'un employe",
+        "description" : "permet de modifierla commande employe ",
+        "operationId" : "updateEmploye",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'etat de la commande a ete modifiee",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeEmployeDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet commande employe n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/update/etat/{idCommande}/{etatCommande}" : {
+      "patch" : {
+        "tags" : [ "gestockv1cmdemployes" ],
+        "summary" : "Modifier l'etat de la commande d'un employe",
+        "description" : "permet de modifier l'etat d'une commande employe ",
+        "operationId" : "updateEtatCommande",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "etatCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "EN_PREPARATION", "VALIDEE", "LIVREE" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'etat de la commande a ete modifiee",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeEmployeDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet commande employe n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/update/item/{idCommande}/{idLigneCommande}/iditem" : {
+      "patch" : {
+        "summary" : "Modifier  l'item d'une commande",
+        "description" : "permet l'item dans une commande employe ",
+        "operationId" : "updateItem",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'item a ete modifiee",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeEmployeDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet commande employe n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/update/quantite/{idCommande}/{idLigneCommande}/{quantite}" : {
+      "patch" : {
+        "tags" : [ "gestockv1cmdemployes" ],
+        "summary" : "Modifier la quantite de la commande d'un employe",
+        "description" : "permet de modifier la quantite d'une commande employe ",
+        "operationId" : "updateQuantiteCommande",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "idLigneCommande",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "quantite",
+          "in" : "path",
+          "required" : true,
+          "type" : "number"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'etat de la commande a ete modifiee",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeEmployeDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet commande employe n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/cmdemployes/{idCmd}" : {
+      "get" : {
+        "summary" : "Rechercher une commande employe par id",
+        "description" : "permet de chercher  une commande employe par id",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "La Commande employe a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/CommandeEmployeDto"
+            }
+          },
+          "404" : {
+            "description" : "aucune commande employe existant avec cet id"
+          }
+        }
+      }
+    },
+    "/gestock/v1/employes/all" : {
+      "get" : {
+        "tags" : [ "gestockv1employes" ],
+        "summary" : "Renvoi la liste de tous les employe",
+        "description" : "permet de chercher et de renvoyer la liste des employes",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le employe a ete trouve dans la bd",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/EmployeDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/employes/create" : {
+      "post" : {
+        "tags" : [ "gestockv1employes" ],
+        "summary" : "Enregistrer un employe",
+        "description" : "permet d'enregistrer ou modifier un employe ",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/EmployeDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet employe cree",
+            "schema" : {
+              "$ref" : "#/definitions/EmployeDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet employe n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/employes/delete/{idEmploye}" : {
+      "delete" : {
+        "tags" : [ "gestockv1employes" ],
+        "summary" : "Supprimer un employe avec son Id",
+        "description" : "permet de supprimer  un employe par id",
+        "operationId" : "delete",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idEmploye",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Le employe a ete supprime dans la bd"
+          }
+        }
+      }
+    },
+    "/gestock/v1/employes/name/{nomEmploye}" : {
+      "get" : {
+        "summary" : "Rechercher un employe par nom",
+        "description" : "permet de chercher  un employe par nom",
+        "operationId" : "findByNomEmploye",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le employe a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/EmployeDto"
+            }
+          },
+          "404" : {
+            "description" : "aucun employe existant avec ce nom"
+          }
+        }
+      }
+    },
+    "/gestock/v1/employes/update" : {
+      "post" : {
+        "tags" : [ "gestockv1employes" ],
+        "summary" : "Modifier un employe",
+        "description" : "permet modifier un employe ",
+        "operationId" : "update",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/EmployeDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet employe est modifie",
+            "schema" : {
+              "$ref" : "#/definitions/EmployeDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet employe n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/employes/{idEmploye}" : {
+      "get" : {
+        "summary" : "Rechercher un employe par id",
+        "description" : "permet de chercher  un employe par id",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le employe a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/EmployeDto"
+            }
+          },
+          "404" : {
+            "description" : "aucun employe existant avec cet id"
+          }
+        }
+      }
+    },
+    "/gestock/v1/items/all" : {
+      "get" : {
+        "summary" : "Renvoi liste des item",
+        "description" : "permet de chercher et renvoyer la liste des items",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des items",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ItemDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/items/code/{codeItem}" : {
+      "get" : {
+        "summary" : "Rechercher un item par code",
+        "description" : "permet de chercher  un item par code",
+        "operationId" : "findByCodeitem",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'item a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/ItemDto"
+            }
+          },
+          "404" : {
+            "description" : "aucun item existant avec ce code"
+          }
+        }
+      }
+    },
+    "/gestock/v1/items/create" : {
+      "post" : {
+        "tags" : [ "gestockv1items" ],
+        "summary" : "Enregistrer un item",
+        "description" : "permet d'enregisdtrer ou modifier un item",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/ItemDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet item cree",
+            "schema" : {
+              "$ref" : "#/definitions/ItemDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet item n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/items/delete/{iditem}" : {
+      "delete" : {
+        "summary" : "Supprimer un item",
+        "description" : "permet de supprimer  un item par id",
+        "operationId" : "delete",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'item a ete supprime dans la bd"
+          }
+        }
+      }
+    },
+    "/gestock/v1/items/filter/category/{idCategory}" : {
+      "get" : {
+        "summary" : "Renvoi les items filtre par category",
+        "description" : "\"Renvoi les items filtre par category",
+        "operationId" : "findAllItemByIdCategory",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "item par category vente",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ItemDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/items/historique/commandeemploye/{iditem}" : {
+      "get" : {
+        "tags" : [ "gestockv1items" ],
+        "summary" : "Renvoi lhistorique des commandes employe",
+        "description" : "permet de renvoyer la liste des commandes employe",
+        "operationId" : "findHistoriqueCommandeEmploye",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idItem",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "historique  commande employe",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/LigneCmdEmployeDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/items/{idItem}" : {
+      "get" : {
+        "summary" : "Rechercher un item par id",
+        "description" : "permet de chercher  un item par id",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'item a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/ItemDto"
+            }
+          },
+          "404" : {
+            "description" : "aucun item existant avec cet id"
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/all" : {
+      "get" : {
+        "summary" : "Renvoie toutes les mvt de stock ",
+        "description" : "permet de chercher  et revoyer le liste des mvt de stock",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le  mvt de stock a ete trouve dans la bd",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MvtStkDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/correctionneg/" : {
+      "post" : {
+        "operationId" : "correctionStockNeg",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStkDto"
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/correctionpos/" : {
+      "post" : {
+        "operationId" : "correctionStockPos",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStkDto"
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/create" : {
+      "post" : {
+        "summary" : "Enregistrer un mvt de stock",
+        "description" : "permet d'enregisdtrer ou modifier un mvt de stock",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet un mvt de stock cree",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStkDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet un mvt de stock n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/delete/{id}" : {
+      "get" : {
+        "summary" : "Supprimer un mvt de stock",
+        "description" : "permet de supprimer  un mvt de stock par id",
+        "operationId" : "delete",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le mvt de stock  a ete supprime dans la bd"
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/entree/" : {
+      "post" : {
+        "tags" : [ "gestockv1mvtstk" ],
+        "operationId" : "entreeStock",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStkDto"
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/filter/Item/{idItem}" : {
+      "get" : {
+        "tags" : [ "gestockv1mvtstk" ],
+        "operationId" : "mvtStkItem",
+        "parameters" : [ {
+          "name" : "idItem",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MvtStkDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/filter/{type}" : {
+      "get" : {
+        "summary" : "Rechercher un mvt de stock par type",
+        "description" : "permet de chercher  un mvt de stock par type",
+        "operationId" : "findByType",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le  mvt de stock a ete trouve dans la bd",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MvtStkDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "aucun  mvt de stock existant avec ce type"
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/sortie/" : {
+      "post" : {
+        "tags" : [ "gestockv1mvtstk" ],
+        "operationId" : "sortieStock",
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/MvtStkDto"
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/stockreel/{idItem}" : {
+      "get" : {
+        "tags" : [ "gestockv1mvtstk" ],
+        "operationId" : "stockReelItem",
+        "parameters" : [ {
+          "name" : "idItem",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "number"
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/mvtstk/{id}" : {
+      "get" : {
+        "summary" : "Rechercher un mvt de stock par Item",
+        "description" : "permet de chercher  un mvt de stock par Item",
+        "operationId" : "findByItem",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Le  mvt de stock a ete trouve dans la bd",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/MvtStkDto"
+              }
+            }
+          },
+          "404" : {
+            "description" : "aucun  mvt de stock existant pour cet Item"
+          }
+        }
+      }
+    },
+    "/gestock/v1/photos/{id}/{title}/{context}" : {
+      "post" : {
+        "tags" : [ "gestockv1photos" ],
+        "summary" : "Enregistrer une photo",
+        "description" : "permet d'enregisdtrer ou modifier une photo",
+        "operationId" : "savePhoto",
+        "parameters" : [ {
+          "name" : "context",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "file",
+          "in" : "formData",
+          "required" : true,
+          "type" : "file"
+        }, {
+          "name" : "title",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "La photo a ete enregistre",
+            "schema" : {
+              "type" : "object"
+            }
+          },
+          "400" : {
+            "description" : "L'objet n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/utilisateurs/all" : {
+      "get" : {
+        "tags" : [ "gestockv1utilisateurs" ],
+        "summary" : "Renvoi liste des utilisateurs",
+        "description" : "permet de chercher et renvoyer la liste des utilisateurs",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des utilisateurs",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/UtilisateurDto"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/gestock/v1/utilisateurs/changermotdepasse" : {
+      "post" : {
+        "summary" : "Changer le mot de passe d'un utilisateur",
+        "description" : "permet de modifier le mot de passe d'un utilisateur",
+        "operationId" : "changerMotDePasse",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "Mot de passe modifie ",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet utilisateur n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/utilisateurs/create" : {
+      "post" : {
+        "tags" : [ "gestockv1utilisateurs" ],
+        "summary" : "Enregistrer un utilisateur",
+        "description" : "permet d'enregisdtrer ou modifier un utilisateur",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/UtilisateurDto"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet utilisateur cree",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet utilisateur n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/utilisateurs/delete/{idUtilisateur}" : {
+      "get" : {
+        "summary" : "Supprimer un utilisateur",
+        "description" : "permet de supprimer  un utilisateur par id",
+        "operationId" : "delete",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'utilisateur a ete supprime dans la bd"
+          }
+        }
+      }
+    },
+    "/gestock/v1/utilisateurs/update" : {
+      "post" : {
+        "summary" : "Modifier un utilisateur",
+        "description" : "permet modifier un utilisateur ",
+        "operationId" : "update",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "L'objet utilisateur est modifie",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "400" : {
+            "description" : "L'objet utilisateur n'est pas valide"
+          }
+        }
+      }
+    },
+    "/gestock/v1/utilisateurs/{idUtilisateur}" : {
+      "get" : {
+        "tags" : [ "gestockv1utilisateurs" ],
+        "summary" : "Rechercher un utilisateur par id",
+        "description" : "permet de chercher  un utilisateur par id",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "idUtilisateur",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "L'utilisateur a ete trouve dans la bd",
+            "schema" : {
+              "$ref" : "#/definitions/UtilisateurDto"
+            }
+          },
+          "404" : {
+            "description" : "aucun utilisateur existant avec cet id"
+          }
+        }
+      }
+    },
+    "gestock/v1/auth/authenticate" : {
+      "post" : {
+        "operationId" : "authenticate",
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AuthenticationResquest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AuthenticationResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "AuthenticationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "accessToken" : {
+          "type" : "string"
+        }
+      }
+    },
+    "AuthenticationResquest" : {
+      "type" : "object",
+      "properties" : {
+        "login" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CategoryDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "designation" : {
+          "type" : "string"
+        }
+      }
+    },
+    "CommandeEmployeDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "code" : {
+          "type" : "string"
+        },
+        "dateCommande" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "etatCommande" : {
+          "type" : "string",
+          "enum" : [ "EN_PREPARATION", "VALIDEE", "LIVREE" ]
+        },
+        "employe" : {
+          "$ref" : "#/definitions/EmployeDto"
+        },
+        "ligneCmdEmployeDtos" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/LigneCmdEmployeDto"
+          }
+        },
+        "commandeLivree" : {
+          "type" : "boolean"
+        }
+      }
+    },
+    "EmployeDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "codeEmploye" : {
+          "type" : "string"
+        },
+        "poste" : {
+          "type" : "string"
+        },
+        "dateEmbauche" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "ItemDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "codeItem" : {
+          "type" : "string"
+        },
+        "designation" : {
+          "type" : "string"
+        },
+        "prixUnitaireHt" : {
+          "type" : "number"
+        },
+        "tauxTva" : {
+          "type" : "number"
+        },
+        "prixUnitaireTtc" : {
+          "type" : "number"
+        },
+        "quantite" : {
+          "type" : "number"
+        },
+        "category" : {
+          "$ref" : "#/definitions/CategoryDto"
+        }
+      }
+    },
+    "LigneCmdEmployeDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "item" : {
+          "$ref" : "#/definitions/ItemDto"
+        },
+        "commandeEmploye" : {
+          "$ref" : "#/definitions/CommandeEmployeDto"
+        },
+        "quantite" : {
+          "type" : "number"
+        },
+        "prixUnitaire" : {
+          "type" : "number"
+        }
+      }
+    },
+    "MvtStkDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "dateMvt" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "quantite" : {
+          "type" : "number"
+        },
+        "item" : {
+          "$ref" : "#/definitions/ItemDto"
+        },
+        "typeMvt" : {
+          "type" : "string",
+          "enum" : [ "ENTREE", "SORTIE", "CORRECTION_POS", "CORRECTION_NEG" ]
+        },
+        "sourceMvtStk" : {
+          "type" : "string",
+          "enum" : [ "COMMANDE_EMPLOYE", "ENTREE_EN_STOCK" ]
+        }
+      }
+    },
+    "UtilisateurDto" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "codeEmploye" : {
+          "type" : "string"
+        },
+        "motDePasse" : {
+          "type" : "string"
+        },
+        "photo" : {
+          "type" : "string"
+        },
+        "role" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

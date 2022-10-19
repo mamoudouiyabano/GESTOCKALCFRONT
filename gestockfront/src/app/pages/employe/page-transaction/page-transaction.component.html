@@ -48,7 +48,7 @@
             
                 <button type="button" class="btn btn-outline-secondary background-white ml-10">
                     <a href="" [routerLink]="['/profil']">
-                        <img src="https://media.istockphoto.com/photos/young-smiling-africanamerican-man-over-white-background-picture-id1081381240?k=20&m=1081381240&s=170667a&w=0&h=zI-Ptw_38pVKwc4EvS7DlGsm4P4MgjRbo7YCEz4ce2I=" width="140px" height="120px" class="rounded-circle" alt="">
+                      <img [src]="employeDto.photo? employeDto.photo: 'assets/user.png'" width="110px" height="110px" class="rounded-circle" alt="">
     
                     </a>
                    
@@ -62,20 +62,24 @@
             <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">Infos</label>
                 <div class="col-sm-6  mb-2 ">
-                  <input type="text" value="Mamoud iyabano" disabled class="form-control" >
+                  <input type="text"  value="{{employeDto.nom}} {{employeDto.prenom}}"  disabled class="form-control" >
                 </div>
              </div>
              <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label"> {{ 'page-inventory.itemId' | translate}}</label>
                 <div class="col-sm-3">
-                  <input type="text"  class="form-control" >
+                  <input type="text" class="form-control" name="codeItem" (input)="searchItem()" [(ngModel)]="codeItem" placeholder="Code item">
+                  <div *ngIf="codeItem.length && !itemNotYetSelected" class="autocomplete shadow p-3 mb-5 rounded">
+                      <p  *ngFor="let item of listItem" (click)="selectitem(item)"> {{item.codeItem}} &nbsp; {{item.designation}}</p>
+                  </div>
                 </div>
                 <div class="col-sm-3">
-                    <input type="text" placeholder=" {{ 'page-employe.quantity' | translate}}" class="form-control" >
+                    <input type="text" [(ngModel)]="quantite" name="quantite" placeholder=" {{ 'page-employe.quantity' | translate}}" class="form-control" >
                   </div>
              </div>
 
 
+            <div >
              <table class="table mt-5">
                 <thead>
                   <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
@@ -85,36 +89,23 @@
                     <th scope="col"> {{ 'page-employe.price' | translate}}</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody  class="mytab">
+                  <tr *ngFor="let ligne of lignesCommande" >
            
-                    <td>Stylo</td>
-                    <td>7</td>
-                    <td>700</td>
+                    <td>{{ligne.item?.designation}}</td>
+                    <td>{{ligne.quantite}}</td>
+                    <td>{{ligne.prixUnitaire && ligne.quantite ? ligne.prixUnitaire * ligne.quantite : ''}}</td>
                   </tr>
                   <tr>
-                   
-                    <td>Gomme</td>
-                    <td>2</td>
-                    <td>200</td>
+                    <td colspan="2">Total</td>
+                    <td></td>
+                    <td> {{totalCommande}} $CAN</td>
                   </tr>
-
-                  <tr>
-                   
-                    <td>Crayon</td>
-                    <td>6</td>
-                    <td>300</td>
-                  </tr>
-
-                  <tr>
-                   
-                    <td>Gomme</td>
-                    <td>2</td>
-                    <td>200</td>
-                  </tr>
+                 
                 
                 </tbody>
               </table>
+            </div>
     
           
         </div>
@@ -123,7 +114,9 @@
             <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.employeeId' | translate}}</label>
                 <div class="col-sm-6  mb-2 ">
-                    <input type="text" placeholder="Enter here" class="form-control" >
+                  <input type="text" (input)="searchEmploye()" name="codeEmploye" [(ngModel)]="codeEmploye" class="form-control" >
+                  <div *ngIf="codeEmploye.length && !employeNotYetSelected" class="autocomplete shadow p-3 mb-5 rounded">
+                    <p  *ngFor="let employe of listEmployes " (click)="selectemploye(employe)"> {{employe.nom}} &nbsp; {{employe.prenom}}</p>
              
                 </div>
              </div>
@@ -131,10 +124,10 @@
              <div class="row mb-2 ">
                 <label  class="col-sm-3  mb-2  col-form-label">{{ 'page-employe.price' | translate}}</label>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" >
+                  <input type="text" name="prixunitaire" [(ngModel)]="searchedItem.prixUnitaireHt" class="form-control" >
                 </div>
                 <div class="col-sm-3">
-                    <button class="btn btn-success vert" ><i class="fas fa-plus"></i> </button>
+                    <button class="btn btn-success vert" (click) = "ajouterLigneCommande()"><i class="fas fa-plus"></i> </button>
                   </div>
              </div>
 
@@ -147,8 +140,27 @@
       </div>
 
     </div>
+    
+  </div>
     <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
         <div style="max-height: 500px; overflow-y: scroll;">
+          <div class="input-group mb-3" style="width: 210px;">
+            <span class="input-group-text"><i class="fas fa-search my-blue"></i></span>
+            <input type="text" class="form-control" name="code" (input)="search()" [(ngModel)]="code" placeholder="find by Item name">
+          </div>
+          <div class="text-end">
+             {{ 'component-button.elementPerPage' | translate}}
+            <button type="button" name="elementPerPage" class="btn btn-outline-secondary background-white mb-2" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ currentElementPerPage }}
+             <i class="bi bi-caret-down-fill my-blue"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('5')">5</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('10')">10</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('15')">15</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('20')">20</a></li>
+              </ul>
+          </div>
         <table class="table background-white longeurTab" >
            
             <thead>
@@ -164,76 +176,22 @@
             </thead>
             <tbody class="table-group-divider" >
                 
-              <tr>
+              <tr *ngFor="let ligne of listLigneTransaction | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                }; let i = index">
                 
-                <td>Fourniture de bureau</td>
-                <td>Stylo bleu</td>
-                <td>5</td>
+                <td>{{ligne.item?.category?.designation}}</td>
+                <td>{{ligne.item?.designation}}</td>
+                <td>{{ligne.quantite}}</td>
                 <td>Piece</td>
-                <td>07/08/2022</td>
-                <td>Ali</td>
+                <td>{{ligne.commandeEmploye?.dateCommande | date: 'dd/MM/yyyy'}}</td>
+                <td>{{ligne.commandeEmploye?.employe?.nom}} {{ligne.commandeEmploye?.employe?.prenom}}</td>
               </tr>
 
-              <tr>
-                
-                <td>Fourniture de bureau</td>
-                <td>Traceuse</td>
-                <td>2</td>
-                <td>Piece</td>
-                <td>07/08/2022</td>
-                <td>Mamoudou</td>
-              </tr>
-
-              <tr>
-                
-                <td>Fourniture de bureau</td>
-                <td>Stylo rouge</td>
-                <td>3</td>
-                <td>Piece</td>
-                <td>07/08/2022</td>
-                <td>John</td>
-              </tr>
-
-              <tr>
-                
-                <td>Fourniture de bureau</td>
-                <td>Gomme</td>
-                <td>3</td>
-                <td>Piece</td>
-                <td>07/08/2022</td>
-                <td>Amed</td>
-              </tr>
-              <tr>
-                
-                <td>Fourniture de bureau</td>
-                <td>Stylo bleu</td>
-                <td>5</td>
-                <td>Piece</td>
-                <td>07/08/2022</td>
-                <td>Ali</td>
-              </tr>
-
-              <tr>
-                
-                <td>Fourniture de bureau</td>
-                <td>Traceuse</td>
-                <td>2</td>
-                <td>Piece</td>
-                <td>07/08/2022</td>
-                <td>Mamoudou</td>
-              </tr>
-
-              <tr>
-                
-                <td>Fourniture de bureau</td>
-                <td>Stylo rouge</td>
-                <td>3</td>
-                <td>Piece</td>
-                <td>07/08/2022</td>
-                <td>John</td>
-              </tr>
-
-              <tr>
+             
 
 
         
@@ -245,6 +203,14 @@
             </tbody>
         
           </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
         </div>
 
     </div>
@@ -258,7 +224,7 @@
 <div class="col-md-9   text-end">
     <button type="button" class="btn btn-secondary   text-end mt-5" (click)="back()" >
       {{ 'component-button.return' | translate}}</button>
-    <button type="button" class="btn btn-success vert text-end mt-5 ml-5" >
+    <button type="button" class="btn btn-success vert text-end mt-5 ml-5"  (click)="saveTransaction()">
       {{ 'component-button.request' | translate}}</button>
   </div>
 

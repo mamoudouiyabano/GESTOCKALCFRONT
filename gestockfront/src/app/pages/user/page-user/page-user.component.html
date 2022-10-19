@@ -20,7 +20,23 @@
 
     <div class="col m-3">
       
-
+      <div class="input-group mb-3" style="width: 170px;">
+        <span class="input-group-text"><i class="fas fa-search my-blue"></i></span>
+        <input type="text" class="form-control" name="code" (input)="search()" [(ngModel)]="code" placeholder="find by code">
+      </div>
+      <div class="text-end"> 
+         {{ 'component-button.elementPerPage' | translate}}
+        <button type="button" name="elementPerPage" class="btn btn-outline-secondary background-white mb-2" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ currentElementPerPage }}
+         <i class="bi bi-caret-down-fill my-blue"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('5')">5</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('10')">10</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('15')">15</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('20')">20</a></li>
+          </ul>
+      </div>
         <table class="table background-white">
             <thead>
               <tr>
@@ -36,94 +52,41 @@
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              <tr>
-                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
-                <td>#0014225</td>
-                <td>Otto</td>
-                <td>Ali</td>
-                <td>07/08/20200</td>
-                <td>Admin</td>
-                <td>ottp@gmail.com</td>
-                <td>***********</td>
+              <tr *ngFor="let user of listUtilisateurs | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                }; let i = index">
+                
+                <th scope="row"><img [src]="user.photo ? user.photo: 'assets/user.png'" width="90px" height="85px" class="rounded-circle" alt=""></th>
+                <td>{{user.codeEmploye}}</td>
+                <td>{{user.prenom}}</td>
+                <td>{{user.nom}}</td>
+                <td>{{user.dateEmbauche}}</td>
+                <td>{{user.role}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.motDePasse}}</td>
                 <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
+                  <i class="fas fa-pencil-alt my-blue" (click)="modifierUser(user.id)"></i> &nbsp; 
+                  <i class="fas fa-trash-alt my-blue" data-bs-toggle="modal" data-bs-target="#modalDeleteEmp" (click)="selectUserPourSupprimer(user.id)"></i>
+              </td>
               </tr>
 
-              <tr>
-                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
-                <td>#0014247</td>
-                <td>Amed</td>
-                <td>Annour</td>
-                <td>07/08/20200</td>
-                <td>Reader</td>
-                <td>Amed@gmail.com</td>
-                <td>***********</td>
-                <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
-
-              <tr>
-                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
-                <td>#0016425</td>
-                <td>Mill</td>
-                <td>Abbo</td>
-                <td>07/08/20200</td>
-                <td>Admin</td>
-                <td>Abbo@gmail.com</td>
-                <td>***********</td>
-                <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
-
-              <tr>
-                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
-                <td>#0014225</td>
-                <td>Otto</td>
-                <td>Ali</td>
-                <td>07/08/20200</td>
-                <td>Reader</td>
-                <td>Ali@gmail.com</td>
-                <td>***********</td>
-                <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
-
-              <tr>
-                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
-                <td>#0014247</td>
-                <td>Amed</td>
-                <td>Annour</td>
-                <td>07/08/20200</td>
-                <td>Admin</td>
-                <td>Annour@gmail.com</td>
-                <td>***********</td>
-                <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
-
-              <tr>
-                <th scope="row"><img src="favicon.ico" class="rounded-circle" alt=""></th>
-                <td>#0016425</td>
-                <td>Mill</td>
-                <td>Abbo</td>
-                <td>07/08/20200</td>
-                <td>Admin</td>
-                <td>Mill@gmail.com</td>
-                <td>***********</td>
-                <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
+             
           
            
               
             </tbody>
           </table>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
 
 
 
@@ -133,5 +96,30 @@
         <!-- pagination 
  <app-pagination></app-pagination> -->
     </div>
+
+</div>
+
+
+
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="modalDeleteEmp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Etes vous sur de vouloir supprimer
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="annulerSuppressionUser()"> <i class="fas fa-ba n" ></i>&nbsp;Annuler</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmerEtSupprimerUser()"> <i class="fas fa-trash-alt" ></i>&nbsp; Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>

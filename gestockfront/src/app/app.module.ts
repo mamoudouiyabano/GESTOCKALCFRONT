@@ -19,12 +19,17 @@ import { PageReportComponent } from './pages/page-report/page-report.component';
 import { PageUserComponent } from './pages/user/page-user/page-user.component';
 import { PageNouveluserComponent } from './pages/user/page-nouveluser/page-nouveluser.component';
 import { PageSettingComponent } from './pages/page-setting/page-setting.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { PageCategoryItemComponent } from './pages/category/page-category-item/page-category-item.component';
 import { PageNouvelcategoryComponent } from './pages/category/page-nouvelcategory/page-nouvelcategory.component';
+import { FormsModule } from '@angular/forms';
+import { InterceptorService } from './services/interceptor/interceptor.service';
+import { DataTablesModule } from 'angular-datatables';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -47,11 +52,16 @@ import { PageNouvelcategoryComponent } from './pages/category/page-nouvelcategor
     PageNouveluserComponent,
     PageSettingComponent,
     PageCategoryItemComponent,
-    PageNouvelcategoryComponent
+    PageNouvelcategoryComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    DataTablesModule,
+    NgxPaginationModule,
+   
 
            // ngx-translate and the loader module
      HttpClientModule,
@@ -67,7 +77,12 @@ import { PageNouvelcategoryComponent } from './pages/category/page-nouvelcategor
         })
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+  }],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

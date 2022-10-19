@@ -5,15 +5,15 @@
   <div class="card col-md-9 background-white mt-2" >
     <p style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold; margin-top: 20px; margin-left: 15px;">{{ 'page-employe.message3' | translate}}</p>
     <div class="row">
-
+      <div class="alert alert-danger" *ngIf="errorDto.errors">{{errorDto.errors}}  {{errorDto.message}}</div>
         <div class="col col-md-3">
             
                 <button type="button" class="btn btn-outline-secondary background-white ml-10">
                     <a href="" [routerLink]="['/profil']">
-                        <img src="https://media.istockphoto.com/photos/young-smiling-africanamerican-man-over-white-background-picture-id1081381240?k=20&m=1081381240&s=170667a&w=0&h=zI-Ptw_38pVKwc4EvS7DlGsm4P4MgjRbo7YCEz4ce2I=" width="110px" height="110px" class="rounded-circle" alt="">
+                        <img [src]="utilisateurDto.photo ? utilisateurDto.photo: 'assets/user.png'" width="110px" height="110px" class="rounded-circle" alt="">
     
                     </a>
-                    <i class="fas fa-pencil-alt my-blue"></i>
+                    
                 </button>
            
              
@@ -24,25 +24,28 @@
             <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.employeeId' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" >
+                  <input type="text" (input)="searchEmploye()" name="codeEmploye" [(ngModel)]="codeEmploye" class="form-control" >
+                  <div *ngIf="codeEmploye.length && !employeNotYetSelected" class="autocomplete shadow p-3 mb-5 rounded">
+                    <p  *ngFor="let employe of listEmployes " (click)="selectemploye(employe)"> {{employe.nom}} &nbsp; {{employe.prenom}}</p>
+                </div>
                 </div>
              </div>
              <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.firstname' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" >
+                  <input type="text"   name="prenom" [(ngModel)]="utilisateurDto.prenom" class="form-control" >
                 </div>
              </div>
              <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.dob' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="date" class="form-control" >
+                  <input type="text"  name="dateEmbauche" [(ngModel)]="utilisateurDto.dateEmbauche" class="form-control" >
                 </div>
              </div>
              <div class="row mb-5 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.password' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="password" class="form-control" >
+                  <input type="password" name="motDePasse" [(ngModel)]="utilisateurDto.motDePasse" class="form-control" >
                 </div>
              </div>
           
@@ -53,9 +56,9 @@
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.role' | translate}}</label>
                 <div class="col-sm-6">
                     
-                    <select class="form-select" name="" >
-                        <option value="">Admin</option>
-                        <option value="">Reader</option>
+                    <select class="form-select" name="role" [(ngModel)]="utilisateurDto.role" >
+                        <option value="Admin">Admin</option>
+                        <option value="Reader">Reader</option>
                     </select>
              
                 </div>
@@ -64,14 +67,14 @@
              <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.lastname' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" >
+                  <input type="text"  name="nom" [(ngModel)]="utilisateurDto.nom" class="form-control" >
                 </div>
              </div>
 
              <div class="row mb-2 ">
                 <label  class="col-sm-3 col-form-label">{{ 'page-employe.email' | translate}}</label>
                 <div class="col-sm-6">
-                  <input type="email" class="form-control" >
+                  <input type="email"  name="email" [(ngModel)]="utilisateurDto.email" class="form-control" >
                 </div>
              </div>
              <div class="row mb-5 ">
@@ -90,7 +93,7 @@
 
 
   <div class="col-md-9 text-end">
-    <button type="button" class="btn btn-success vert text-end mt-5" >
+    <button type="button" class="btn btn-success vert text-end mt-5" (click)="saveUtilisateur()">
       {{ 'component-button.add' | translate}} </button>
   </div>
 

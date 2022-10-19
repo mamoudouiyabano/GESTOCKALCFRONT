@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
+import { DataTablesModule } from 'angular-datatables';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class AppComponent {
   title = 'gestockfront';
   lang: any  = localStorage.getItem('LANG');
+  
 
   
 
@@ -30,11 +32,11 @@ export class AppComponent {
     
   }
 
-  // ngOnInit(): void {
+   ngOnInit(): void {
   //   console.log('on init test');
   //   console.log(localStorage.getItem('LANG'));
   //   this.translate.use(this.lang);
-  // }
+   }
 
 
 

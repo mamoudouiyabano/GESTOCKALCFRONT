@@ -1,102 +1,92 @@
 <div class="col">
-    <div class="row m-3">
-        <div class="col-md-7 p-0">
-            <h1>{{ 'page-inventory.message' | translate}}</h1>
-        </div>
-        <div class="col-md-5 text-end">
-          
-            <div class="row">
-                <app-boutton-action 
-                [isImporterVisible]="false"
-                [isTransactionVisible]="false"
-                 (clickEvent)="nouvelItem()"
-                >
-                    
-                </app-boutton-action>
-            </div>
-          
-          
-        </div>
+  <div class="row m-3">
+      <div class="col-md-7 p-0">
+          <h1>{{ 'page-inventory.message' | translate}}</h1>
+      </div>
+      <div class="col-md-5 text-end">
+
+          <div class="row">
+              <app-boutton-action
+              [isImporterVisible]="false"
+              [isTransactionVisible]="false"
+               (clickEvent)="nouvelItem()"
+               (clickExportEvent)="nouvelExport()"
+              >
+
+              </app-boutton-action>
+          </div>
+
+
+      </div>
+  </div>
+
+  <div class="col m-3">
+
+    <div class="input-group mb-3" style="width: 170px;">
+      <span class="input-group-text"><i class="fas fa-search my-blue"></i></span>
+      <input type="text" class="form-control" name="code" (input)="search()" [(ngModel)]="code" placeholder="find by codeItem">
     </div>
-
-    <div class="col m-3">
-      
-
-        <table class="table background-white">
-            <thead>
-              <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
-               
-                <th scope="col">{{ 'page-inventory.itemId' | translate}}</th>
-                <th scope="col">{{ 'page-inventory.name' | translate}}</th>
-                <th scope="col">{{ 'page-inventory.category' | translate}}</th>
-                <th scope="col">{{ 'page-inventory.quantity' | translate}}</th>
-                <th scope="col">{{ 'page-inventory.mvt' | translate}}</th>
-                <th scope="col">{{ 'page-inventory.actionDate' | translate}}</th>
-              </tr>
-            </thead>
-            <tbody class="table-group-divider">
-              <tr>
-              
-                <td>#0014225</td>
-                <td>Stylo bleu</td>
-                <td>Fourniture de bureau</td>
-                <td>5</td>
-                <td>entree</td>
-                <td>24/09/2022</td>
-              </tr>
-
-              <tr>
-              
-                <td>#0014425</td>
-                <td>Stylo Rouge</td>
-                <td>Fourniture de bureau</td>
-                <td>8</td>
-                <td>entree</td>
-                <td>24/09/2022</td>
-              </tr>
-
-              <tr>
-              
-                <td>#0014285</td>
-                <td>Gomme</td>
-                <td>Fourniture de bureau</td>
-                <td>-3</td>
-                <td>sortie</td>
-                <td>24/09/2022</td>
-              </tr>
-
-              <tr>
-              
-                <td>#0014225</td>
-                <td>Stylo vert</td>
-                <td>Fourniture de bureau</td>
-                <td>2</td>
-                <td>entree</td>
-                <td>24/09/2022</td>
-              </tr>
-
-              <tr>
-              
-                <td>#0024285</td>
-                <td>Crayon</td>
-                <td>Fourniture de bureau</td>
-                <td>-5</td>
-                <td>sortie</td>
-                <td>24/09/2022</td>
-              </tr>
-
-      
-              
-            </tbody>
-          </table>
-
-
-
-
-
-    <div class="row m-3">
-        <!-- pagination 
- <app-pagination></app-pagination> -->
+    <div class="text-end">
+       {{ 'component-button.elementPerPage' | translate}}
+      <button type="button" name="elementPerPage" class="btn btn-outline-secondary background-white mb-2" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ currentElementPerPage }}
+       <i class="bi bi-caret-down-fill my-blue"></i>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('5')">5</a></li>
+          <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('10')">10</a></li>
+          <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('15')">15</a></li>
+          <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('20')">20</a></li>
+        </ul>
     </div>
+      <table class="table background-white">
+          <thead>
+            <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
+
+              <th scope="col">{{ 'page-inventory.itemId' | translate}}</th>
+              <th scope="col">{{ 'page-inventory.name' | translate}}</th>
+              <th scope="col">{{ 'page-inventory.category' | translate}}</th>
+              <th scope="col">{{ 'page-inventory.quantity' | translate}}</th>
+              <th scope="col">{{ 'page-inventory.mvt' | translate}}</th>
+              <th scope="col">{{ 'page-inventory.actionDate' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <tr *ngFor="let inv of listIventory | paginate
+            : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              }; let i = index">
+
+              <td>{{inv.item?.codeItem}}</td>
+              <td>{{inv.item?.designation}}</td>
+              <td>{{inv.item?.category?.designation}}</td>
+              <td>{{inv.quantite}}</td>
+              <td>{{inv.typeMvt}}</td>
+              <td>{{inv.dateMvt | date: 'dd/MM/yyyy'}}</td>
+            </tr>
+
+
+
+
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+          <pagination-controls
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange($event)"
+          >
+          </pagination-controls>
+        </div>
+
+
+
+
+  <div class="row m-3">
+      <!-- pagination
+<app-pagination></app-pagination> -->
+  </div>
 
 </div>

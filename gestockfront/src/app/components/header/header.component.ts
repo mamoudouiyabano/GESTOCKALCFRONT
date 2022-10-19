@@ -1,6 +1,8 @@
 import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import {TranslateService} from "@ngx-translate/core";
+import { UsersService } from 'src/app/services/users/users.service';
+import { UtilisateurDto } from 'src/gs-api/src/models';
 import { MenuComponent } from '../menu/menu.component';
 
 @Component({
@@ -10,11 +12,12 @@ import { MenuComponent } from '../menu/menu.component';
 })
 export class HeaderComponent implements OnInit {
   currentLang: any = '';
+  utilisateurInfo: UtilisateurDto = {};
 
   @Input()
   menu!: MenuComponent;
 
-  constructor(private translate: TranslateService, private router:Router) { 
+  constructor(private translate: TranslateService, private router:Router, private userService: UsersService) { 
 
     if(localStorage.getItem('LANG')) {
       this.currentLang = localStorage.getItem('LANG');
@@ -28,6 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.utilisateurInfo = this.userService.getConnectedUser();
   }
 
 

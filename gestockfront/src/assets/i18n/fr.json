@@ -45,7 +45,8 @@
         "return": "Retour",
         "request": "Demander",
         "save": "Enregistrer",
-        "generateReport": "Générer un rapport"
+        "generateReport": "Générer un rapport",
+        "elementPerPage": "Element Par Page"
     },
 
     "page-employe": {

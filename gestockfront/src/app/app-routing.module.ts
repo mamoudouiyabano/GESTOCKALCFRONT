@@ -16,6 +16,7 @@ import { PageReportComponent } from './pages/page-report/page-report.component';
 import { PageSettingComponent } from './pages/page-setting/page-setting.component';
 import { PageNouveluserComponent } from './pages/user/page-nouveluser/page-nouveluser.component';
 import { PageUserComponent } from './pages/user/page-user/page-user.component';
+import { GuardService } from './services/guard/guard.service';
 
 const routes: Routes = [
   {
@@ -26,77 +27,116 @@ const routes: Routes = [
   {
     path: '',
     component:PageDashboardComponent,
+    canActivate: [GuardService],
   
     children: [
 
       {
         path: 'statistiques',
         component: StatistiqueComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'menu',
         component: MenuComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'employes',
         component: PageEmployeComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'nouvelemploye',
         component: NouvelEmployeComponent,
+        canActivate: [GuardService],
+       
+      },
+      {
+        path: 'nouvelemploye/:idEmploye',
+        component: NouvelEmployeComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'transaction',
         component: PageTransactionComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'inventory',
         component: PageIventoryComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'items',
         component: PageItemsComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'category',
         component: PageCategoryItemComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'nouvelcategory',
         component: PageNouvelcategoryComponent,
+        canActivate: [GuardService],
+       
+      },
+      {
+        path: 'nouvelcategory/:idCategory',
+        component: PageNouvelcategoryComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'nouvelitem',
         component: PageNouvelitemsComponent,
+        canActivate: [GuardService],
+       
+      },
+      {
+        path: 'nouvelitem/:idItem',
+        component: PageNouvelitemsComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'report',
         component: PageReportComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'users',
         component: PageUserComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'nouveluser',
         component: PageNouveluserComponent,
+        canActivate: [GuardService],
+       
+      },
+      {
+        path: 'nouveluser/:idUtilisateur',
+        component: PageNouveluserComponent,
+        canActivate: [GuardService],
        
       },
       {
         path: 'setting',
         component: PageSettingComponent,
+        canActivate: [GuardService],
        
       },
 

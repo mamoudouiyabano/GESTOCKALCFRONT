@@ -1,11 +1,11 @@
 <div class="row">
 
     <div class="col-md-3" *ngIf="isExporterVisible">
-        <button type="button" class="btn btn  background-white "><span class="my-blue" style="font-weight: bold;"><i class="bi bi-download"></i> {{ 'component-button.export' | translate}}</span></button>
+        <button type="button" class="btn btn  background-white "><span class="my-blue" (click)="bouttonExportClick()" style="font-weight: bold;"><i class="bi bi-download"></i> {{ 'component-button.export' | translate}}</span></button>
     </div>
 
     <div class="col-md-3 " *ngIf="isImporterVisible">
-        <button type="button" class="btn btn background-white"><span class="my-blue" style="font-weight: bold;"><i class="bi bi-upload "></i>  {{ 'component-button.import' | translate}}</span></button>
+        <button type="button" class="btn btn background-white"><span class="my-blue" style="font-weight: bold;"><i class="bi bi-upload " data-bs-toggle="modal" data-bs-target="#modalImport" ></i>  {{ 'component-button.import' | translate}}</span></button>
     </div>
     
   
@@ -18,4 +18,51 @@
         <button type="button" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true" (click)="bouttonTransactionClick()"></i>  {{ 'component-button.transaction' | translate}}</button>
     </div>
     
+
+
+
+
+  
+  </div>
+
+       <!-- Modal -->
+<div class="modal fade" id="modalImport" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+     
+        <div class="modal-body">
+            <h2 class="text-center mb-5">Upload Your Excel file</h2>
+            <div style="text-align: center; margin-bottom:8px">
+                <img  [src]="logoUrl" idth="60px" height="60px" alt="logoExcel">
+
+            </div>
+            
+            <!-- Upload  -->
+            <form id="file-upload-form" class="uploader">
+              <input id="file-upload" type="file" name="fileUpload" (change)="fileUpload($event)" accept=".xls,.xlsx" />
+            
+              <label for="file-upload" id="file-drag">
+               
+                <div id="start">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                  <div>Drag a file here or browse for a file to Upload</div>
+                  
+                  <!-- <span id="file-upload-btn" class="btn btn-primary">Select a file</span> -->
+                </div>
+                <div id="response" class="hidden">
+                  <div id="messages"></div>
+                  <progress class="progress" id="file-progress" value="0">
+                    <span>0</span>%
+                  </progress>
+                </div>
+              </label>
+            </form>
+        </div>
+        <div style="text-align: center; margin-bottom:8px">
+          <button type="button" class="btn btn-secondary" style="margin-left: 20px;" data-bs-dismiss="modal" > <i class="fas fa-ba n" ></i>&nbsp;Cancel </button>
+          <button type="button" class="btn btn-success vert" style="margin-left: 20px;"  id="file-upload-btn" data-bs-dismiss="modal" (click)="bouttonImportClick()"> &nbsp; Upload</button>
+        </div>
+      </div>
     </div>
+  </div>
+  

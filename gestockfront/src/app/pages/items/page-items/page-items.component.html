@@ -8,6 +8,7 @@
             <div class="row">
                 <app-boutton-action [isTransactionVisible]="false"
                  (clickEvent)="nouvelItem()"
+                 (clickExportEvent)="nouvelExport()"
                 >
                     
                 </app-boutton-action>
@@ -19,7 +20,23 @@
 
     <div class="col m-3">
       
-
+      <div class="input-group mb-3" style="width: 170px;">
+        <span class="input-group-text"><i class="fas fa-search my-blue"></i></span>
+        <input type="text" class="form-control" name="code" (input)="search()" [(ngModel)]="code" placeholder="find by code">
+      </div>
+      <div class="text-end"> 
+         {{ 'component-button.elementPerPage' | translate}}
+        <button type="button" name="elementPerPage" class="btn btn-outline-secondary background-white mb-2" data-bs-toggle="dropdown" aria-expanded="false">
+          {{ currentElementPerPage }}
+         <i class="bi bi-caret-down-fill my-blue"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('5')">5</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('10')">10</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('15')">15</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0);" (click)="ElementPerPage('20')">20</a></li>
+          </ul>
+      </div>
         <table class="table background-white">
             <thead>
               <tr style="color: #14348c; font-family: 'Lucida Sans'; font-weight: bold;">
@@ -35,74 +52,26 @@
               </tr>
             </thead>
             <tbody class="table-group-divider">
-              <tr>
+              <tr *ngFor="let item of listItems | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                }; let i = index">
                
-                <td>#0014225</td>
-                <td>Stylo Bleu</td>
-                <td>12</td>
-                <td>100</td>
-                <td>1200</td>
+                <td>{{item.codeItem}}</td>
+                <td>{{item.designation}}</td>
+                <td>{{item.quantite}}</td>
+                <td>{{item.prixUnitaireHt}}</td>
+                <td  *ngIf="item.prixUnitaireHt && item.quantite">{{item.prixUnitaireHt * item.quantite}}</td>
                 <td>$CAN</td>
                 <td>25/09/2022</td>
                 <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
+                    <i class="fas fa-pencil-alt my-blue" (click)="modifierItem(item.id)"></i> &nbsp; 
+                    <i class="fas fa-trash-alt my-blue" data-bs-toggle="modal" data-bs-target="#modalDeleteCat" (click)="selectItemPourSupprimer(item.id)"></i>
                 </td>
               </tr>
-              <tr>
-               
-                <td>#0014225</td>
-                <td>Crayon</td>
-                <td>20</td>
-                <td>50</td>
-                <td>1000</td>
-                <td>$CAN</td>
-                <td>25/09/2022</td>
-                <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
-
-              <tr>
-               
-                <td>#0014225</td>
-                <td>Stylo Rouge</td>
-                <td>17</td>
-                <td>100</td>
-                <td>1700</td>
-                <td>$CAN</td>
-                <td>25/09/2022</td>
-                <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
-
-              <tr>
-               
-                <td>#0014225</td>
-                <td>Surligneur</td>
-                <td>20</td>
-                <td>100</td>
-                <td>2000</td>
-                <td>$CAN</td>
-                <td>25/09/2022</td>
-                <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
-
-              <tr>
-               
-                <td>#0014225</td>
-                <td>Gomme</td>
-                <td>30</td>
-                <td>100</td>
-                <td>3000</td>
-                <td>$CAN</td>
-                <td>25/09/2022</td>
-                  <td>
-                    <i class="fas fa-pencil-alt my-blue"></i> &nbsp; <i class="fas fa-trash-alt my-blue"></i>
-                </td>
-              </tr>
+            
 
 
 
@@ -110,6 +79,15 @@
               
             </tbody>
           </table>
+
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)"
+            >
+            </pagination-controls>
+          </div>
 
 
 
@@ -119,5 +97,25 @@
         <!-- pagination 
  <app-pagination></app-pagination> -->
     </div>
+
+
+            <!-- Modal -->
+<div class="modal fade" id="modalDeleteCat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Etes vous sur de vouloir supprimer cet item
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="annulerSuppressionItem()"> <i class="fas fa-ba n" ></i>&nbsp;Annuler</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="confirmerEtSupprimerItem()"> <i class="fas fa-trash-alt" ></i>&nbsp; Supprimer</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </div>
