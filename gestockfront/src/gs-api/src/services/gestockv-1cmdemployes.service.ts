@@ -178,7 +178,7 @@ class Gestockv1cmdemployesService extends __BaseService {
 
   
   saveCommande(commandeEmployeDto:CommandeEmployeDto) {
-    return this.http.post('http://localhost:8084/gestock/v1/cmdemployes/create', commandeEmployeDto);
+    return this.http.post('https://gestock-alc-backend.herokuapp.com/gestock/v1/cmdemployes/create', commandeEmployeDto);
   }
 
   findAll(): any{
@@ -211,7 +211,7 @@ findAllLignesCmdEmployeByCmdEmployeId(idCommande?: number): Observable<CommandeE
 }
 
 findAllLigneCmdes(): any{
-  return this.http.get('http://localhost:8084/gestock/v1/cmdemployes/allLignesCmde');
+  return this.http.get('https://gestock-alc-backend.herokuapp.com/gestock/v1/cmdemployes/allLignesCmde');
 
 }
 

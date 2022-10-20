@@ -10,7 +10,7 @@ import { Gestockv1utilisateursService } from 'src/gs-api/src/services';
 })
 export class UsersService {
 
-  rootUrl="http://localhost:8084";
+  rootUrl="https://gestock-alc-backend.herokuapp.com";
   
 
   constructor(private user: Gestockv1utilisateursService,
@@ -19,13 +19,13 @@ export class UsersService {
 
 
     login(authenticationResquest: AuthenticationResquest): Observable<AuthenticationResponse> {
-      return this.http.post('http://localhost:8084/gestock/v1/auth/authenticate', authenticationResquest);
+      return this.http.post('https://gestock-alc-backend.herokuapp.com/gestock/v1/auth/authenticate', authenticationResquest);
         
     }
 
     getUserByEmail(email?: string): Observable<UtilisateurDto> {
       if(email!== undefined) {
-        return this.http.get(`http://localhost:8084/gestock/v1/utilisateurs/email/${email}`);
+        return this.http.get(`https://gestock-alc-backend.herokuapp.com/gestock/v1/utilisateurs/email/${email}`);
 
       }
       return of();

@@ -8,7 +8,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  rootUrl: string = 'http://localhost:8084';
+  //rootUrl: string = 'http://localhost:8084';
+  rootUrl: string = 'https://gestock-alc-backend.herokuapp.com';
 }
 
 export interface ApiConfigurationInterface {

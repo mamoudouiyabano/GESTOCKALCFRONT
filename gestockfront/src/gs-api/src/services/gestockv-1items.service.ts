@@ -100,7 +100,7 @@ class Gestockv1itemsService extends __BaseService {
   }
 
   findAll(): any{
-    return this.http.get('http://localhost:8084/gestock/v1/items/all');
+    return this.http.get('https://gestock-alc-backend.herokuapp.com/gestock/v1/items/all');
 
 }
 

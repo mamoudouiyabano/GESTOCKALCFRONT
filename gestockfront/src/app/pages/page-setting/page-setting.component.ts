@@ -47,7 +47,7 @@ export class PageSettingComponent implements OnInit {
       }
     );
    
-    console.log(this.changerMotDepasseDto);
+  
   } 
   
 
